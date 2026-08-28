@@ -1,8 +1,8 @@
 // 1. Dynamic Video Engine Swapping Execution
 function switchTrack(videoId, title, artist, element) {
-  // Replace iframe address source targeting safe endpoint
+  // Safe layout string incorporating autoplay, mute override, and dynamic jsapi rules
   const player = document.getElementById('video-player');
-  player.src = `https://youtube.com{videoId}?enablejsapi=1&modestbranding=1&rel=0`;
+  player.src = `https://youtube.com{videoId}?enablejsapi=1&modestbranding=1&rel=0&autoplay=1&mute=1`;
   
   // Swap textual metadata elements dynamically
   document.getElementById('song-title').innerText = title;
@@ -11,6 +11,10 @@ function switchTrack(videoId, title, artist, element) {
   // Toggle active button highlight states
   document.querySelectorAll('.pixel-btn').forEach(btn => btn.classList.remove('active'));
   element.classList.add('active');
+
+  // Trigger visualizer animation on track change
+  const visualizer = document.querySelector('.visualizer-container');
+  visualizer.classList.add('playing');
 }
 
 // 2. Wind-Blown Slanted Rain Drop Generation Script
