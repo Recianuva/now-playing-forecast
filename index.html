@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Now Playing Status</title>
-  <!-- Google Fonts for Pixel Typography -->
+  <title>weathergirl tracker desk</title>
   <link rel="preconnect" href="https://googleapis.com">
   <link rel="preconnect" href="https://gstatic.com" crossorigin>
   <link href="https://googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
@@ -12,19 +11,28 @@
 </head>
 <body>
 
+  <!-- Ambient Slanted Rain Overlay System -->
+  <div id="rain-canvas" class="rain-overlay"></div>
+
   <main class="layout-container">
     
-    <!-- Profile Header Section -->
-    <header class="profile-header">
-      <div class="avatar-fallback">☁️</div>
-      <h1 class="username">@user</h1>
-    </header>
+    <!-- Imbedded YouTube Player Wrapper -->
+    <section class="player-wrapper">
+      <!-- Standard modestbranding parameter prevents taking you to the external site -->
+      <iframe 
+        id="video-player"
+        src="https://youtube.com" 
+        title="weathergirl playlist player" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allowfullscreen>
+      </iframe>
+    </section>
 
-    <!-- Main Live Status Card -->
+    <!-- Dynamic Song Info Status Panel -->
     <section class="status-card">
       <div class="card-header">
-        <span class="status-label">NOW LISTENING</span>
-        <!-- Fixed-height visualizer container that prevents layout breaks -->
+        <span class="status-label">PLAYING CHANNELS</span>
         <div class="visualizer-container">
           <div class="bar"></div>
           <div class="bar"></div>
@@ -34,23 +42,21 @@
       </div>
       
       <div class="track-info">
-        <h2 class="song-title">weathergirl</h2>
-        <p class="artist-name">FLAVOR FOLEY</p>
-      </div>
-
-      <!-- Static Progress Bar Tracking -->
-      <div class="progress-bar-wrapper">
-        <div class="progress-bar-fill"></div>
+        <h2 id="song-title" class="song-title">weathergirl</h2>
+        <p id="artist-name" class="artist-name">FLAVOR FOLEY ft. Eleanor Forte</p>
       </div>
     </section>
 
-    <!-- Navigation Footer Links -->
-    <footer class="links-footer">
-      <a href="https://genius.com" target="_blank" rel="noopener noreferrer" class="pixel-link">GENIUS LYRICS</a>
-      <a href="https://flavorfoley.com" target="_blank" rel="noopener noreferrer" class="pixel-link">FLAVOR FOLEY SITE</a>
-    </footer>
+    <!-- Channel Selector Switch Matrix -->
+    <nav class="track-selector">
+      <button class="pixel-btn active" onclick="switchTrack('M7VSEZOQIlg', 'weathergirl', 'FLAVOR FOLEY ft. Eleanor Forte', this)">[ ORIGINAL ]</button>
+      <button class="pixel-btn" onclick="switchTrack('OaPcIO2S0Dw', 'weathergirl (Cover)', 'LadyAuro', this)">[ COVER A ]</button>
+      <button class="pixel-btn" onclick="switchTrack('RD49djtI4zq8', 'weathergirl (Remix/Cover)', 'Track 03', this)">[ COVER B ]</button>
+    </nav>
 
   </main>
 
+  <!-- Control Logics -->
+  <script src="script.js"></script>
 </body>
 </html>
