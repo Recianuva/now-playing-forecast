@@ -6,7 +6,7 @@
   <title>weathergirl tracker desk</title>
   <link rel="preconnect" href="https://googleapis.com">
   <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://googleapis.com" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,13 +18,14 @@
     
     <!-- Imbedded YouTube Player Wrapper -->
     <section class="player-wrapper">
-      <!-- Standard modestbranding parameter prevents taking you to the external site -->
+      <!-- Added strict-origin parameter to satisfy platform frame handshakes -->
       <iframe 
         id="video-player"
         src="https://youtube.com" 
         title="weathergirl playlist player" 
         frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen>
       </iframe>
     </section>
@@ -33,7 +34,7 @@
     <section class="status-card">
       <div class="card-header">
         <span class="status-label">PLAYING CHANNELS</span>
-        <div class="visualizer-container">
+        <div class="visualizer-container playing">
           <div class="bar"></div>
           <div class="bar"></div>
           <div class="bar"></div>
