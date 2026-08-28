@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Now Playing Status</title>
+  <!-- Google Fonts for Pixel Typography -->
+  <link rel="preconnect" href="https://googleapis.com">
+  <link rel="preconnect" href="https://gstatic.com" crossorigin>
+  <link href="https://googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="layout-container">
+    
+    <!-- Profile Header Section -->
+    <header class="profile-header">
+      <div class="avatar-fallback">☁️</div>
+      <h1 class="username">@user</h1>
+    </header>
+
+    <!-- Main Live Status Card -->
+    <section class="status-card">
+      <div class="card-header">
+        <span class="status-label">NOW LISTENING</span>
+        <!-- Fixed-height visualizer container that prevents layout breaks -->
+        <div class="visualizer-container">
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+          <div class="bar"></div>
+        </div>
+      </div>
+      
+      <div class="track-info">
+        <h2 class="song-title">weathergirl</h2>
+        <p class="artist-name">FLAVOR FOLEY</p>
+      </div>
+
+      <!-- Static Progress Bar Tracking -->
+      <div class="progress-bar-wrapper">
+        <div class="progress-bar-fill"></div>
+      </div>
+    </section>
+
+    <!-- Navigation Footer Links -->
+    <footer class="links-footer">
+      <a href="https://genius.com" target="_blank" rel="noopener noreferrer" class="pixel-link">GENIUS LYRICS</a>
+      <a href="https://flavorfoley.com" target="_blank" rel="noopener noreferrer" class="pixel-link">FLAVOR FOLEY SITE</a>
+    </footer>
+
+  </main>
+
+</body>
+</html>
