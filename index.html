@@ -6,7 +6,7 @@
   <title>weathergirl tracker desk</title>
   <link rel="preconnect" href="https://googleapis.com">
   <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com" rel="stylesheet">
+  <link href="https://googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,14 +18,12 @@
     
     <!-- Imbedded YouTube Player Wrapper -->
     <section class="player-wrapper">
-      <!-- Added strict-origin parameter to satisfy platform frame handshakes -->
       <iframe 
         id="video-player"
         src="https://youtube.com" 
         title="weathergirl playlist player" 
         frameborder="0" 
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-        referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen>
       </iframe>
     </section>
@@ -34,7 +32,7 @@
     <section class="status-card">
       <div class="card-header">
         <span class="status-label">PLAYING CHANNELS</span>
-        <div class="visualizer-container playing">
+        <div class="visualizer-container">
           <div class="bar"></div>
           <div class="bar"></div>
           <div class="bar"></div>
@@ -52,12 +50,11 @@
     <nav class="track-selector">
       <button class="pixel-btn active" onclick="switchTrack('M7VSEZOQIlg', 'weathergirl', 'FLAVOR FOLEY ft. Eleanor Forte', this)">[ ORIGINAL ]</button>
       <button class="pixel-btn" onclick="switchTrack('OaPcIO2S0Dw', 'weathergirl (Cover)', 'LadyAuro', this)">[ COVER A ]</button>
-      <button class="pixel-btn" onclick="switchTrack('vYIYIVmOo3Q', 'weathergirl (Remix/Cover)', 'Lo-Fi', this)">[ COVER B ]</button>
+      <button class="pixel-btn" onclick="switchTrack('RD49djtI4zq', 'weathergirl (Remix)', 'Track 03', this)">[ COVER B ]</button>
     </nav>
 
   </main>
 
-  <!-- Control Logics -->
   <script src="script.js"></script>
 </body>
 </html>
