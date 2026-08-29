@@ -6,7 +6,6 @@
 }
 
 body {
-  /* Added monospace fallback to enforce pixel sizing if font requests take time to resolve */
   font-family: 'Silkscreen', monospace, sans-serif;
   min-height: 100vh;
   background: linear-gradient(180deg, #A4CFFF 0%, #FFFFFF 100%);
@@ -173,14 +172,11 @@ body {
   color: #FFFFFF;
 }
 
-/* ==========================================================================
-   DESKTOP RESPONSIVE RECONSTRUCTION LAYER
-   Triggered on laptop/monitor screens wider than 768px
-   ========================================================================== */
+/* DESKTOP RESPONSIVE RECONSTRUCTION LAYER */
 @media (min-width: 768px) {
   .layout-container {
-    max-width: 820px;            /* Expansion limit for sleek landscape presentation */
-    flex-direction: row;        /* Converts vertical stacking into modern side-by-side panes */
+    max-width: 820px;            
+    flex-direction: row;        
     align-items: stretch;
     background: rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(4px);
@@ -191,12 +187,12 @@ body {
   }
 
   .player-wrapper {
-    flex: 1.2;                  /* Video screen claims slightly more spatial priority */
+    flex: 1.2;                  
     margin-bottom: 0;
   }
 
   .control-deck {
-    flex: 0.8;                  /* Controls map comfortably to the right panel */
+    flex: 0.8;                  
     justify-content: space-between;
   }
 }
