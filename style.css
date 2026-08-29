@@ -17,7 +17,7 @@ body {
   position: relative;
 }
 
-/* Rain Layer Matrix */
+/* Rain Layer Matrix - Locked behind player to restore click controls */
 .rain-overlay {
   position: fixed;
   top: 0;
@@ -25,7 +25,7 @@ body {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 1;
+  z-index: -1;
 }
 
 .drop {
@@ -53,6 +53,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: relative;
   z-index: 10;
 }
 
