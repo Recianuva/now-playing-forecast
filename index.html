@@ -6,9 +6,9 @@
   <title>weathergirl tracker desk</title>
   
   <!-- Priority Google Font Imports (Fixed Silkscreen Loading Block) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://googleapis.com">
   <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com" rel="stylesheet">
+  <link href="https://googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
   
   <link rel="stylesheet" href="style.css">
 </head>
@@ -22,12 +22,14 @@
     
     <!-- Left Widescreen Pane: Embedded YouTube Player Wrapper -->
     <section class="player-wrapper" id="player-container">
+      <!-- Added allow attributes and strict-origin parameters to clear cross-origin errors -->
       <iframe 
         id="video-frame"
         src="https://youtube.com" 
         title="weathergirl playlist player" 
         frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+        allow="autoplay; encrypted-media; picture-in-picture" 
+        referrerpolicy="strict-origin-when-cross-origin"
         allowfullscreen>
       </iframe>
     </section>
