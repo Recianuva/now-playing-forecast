@@ -1,3 +1,4 @@
+/* Core Reset and Base Font Definition */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -5,7 +6,8 @@
 }
 
 body {
-  font-family: 'Silkscreen', sans-serif;
+  /* Added monospace fallback to enforce pixel sizing if font requests take time to resolve */
+  font-family: 'Silkscreen', monospace, sans-serif;
   min-height: 100vh;
   background: linear-gradient(180deg, #A4CFFF 0%, #FFFFFF 100%);
   display: flex;
@@ -17,7 +19,7 @@ body {
   position: relative;
 }
 
-/* Rain Layer Matrix - Locked behind player to restore click controls */
+/* Rain Layer Matrix - Deep Background Placement */
 .rain-overlay {
   position: fixed;
   top: 0;
@@ -46,7 +48,7 @@ body {
   }
 }
 
-/* Core Interface Box */
+/* Base Layout Config (Mobile-First Architecture) */
 .layout-container {
   width: 100%;
   max-width: 360px;
@@ -55,6 +57,13 @@ body {
   gap: 20px;
   position: relative;
   z-index: 10;
+}
+
+.control-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
 }
 
 /* Embedded Core Video Player Styling */
@@ -147,7 +156,7 @@ body {
 }
 
 .pixel-btn {
-  font-family: 'Silkscreen', sans-serif;
+  font-family: 'Silkscreen', monospace, sans-serif;
   background: rgba(255, 255, 255, 0.7);
   border: 2px solid #2B6CB0;
   color: #2B6CB0;
@@ -162,4 +171,32 @@ body {
 .pixel-btn:hover, .pixel-btn.active {
   background: #2B6CB0;
   color: #FFFFFF;
+}
+
+/* ==========================================================================
+   DESKTOP RESPONSIVE RECONSTRUCTION LAYER
+   Triggered on laptop/monitor screens wider than 768px
+   ========================================================================== */
+@media (min-width: 768px) {
+  .layout-container {
+    max-width: 820px;            /* Expansion limit for sleek landscape presentation */
+    flex-direction: row;        /* Converts vertical stacking into modern side-by-side panes */
+    align-items: stretch;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 24px;
+    border: 3px double rgba(43, 108, 176, 0.3);
+    border-radius: 8px;
+  }
+
+  .player-wrapper {
+    flex: 1.2;                  /* Video screen claims slightly more spatial priority */
+    margin-bottom: 0;
+  }
+
+  .control-deck {
+    flex: 0.8;                  /* Controls map comfortably to the right panel */
+    justify-content: space-between;
+  }
 }
