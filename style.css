@@ -1,8 +1,7 @@
-/* Bulletproof Localized Webfont Import Layer */
+/* Bulletproof Self-Hosted Font Link - Loads straight from your repository root */
 @font-face {
   font-family: 'Silkscreen';
-  src: url('https://jsdelivr.net') format('woff2'),
-       url('https://jsdelivr.net') format('woff');
+  src: url('Silkscreen-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -111,7 +110,7 @@ body {
 .status-label {
   font-family: 'Silkscreen', monospace, sans-serif;
   font-size: 10px;
-  font-weight: 400; /* Force uniform weight matching font file spec */
+  font-weight: 400; 
   letter-spacing: 1px;
   background: #2B6CB0;
   color: #FFFFFF;
@@ -210,3 +209,4 @@ body {
     flex: 0.8;                  
     justify-content: space-between;
   }
+}
