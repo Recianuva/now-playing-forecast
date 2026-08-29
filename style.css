@@ -1,5 +1,12 @@
-/* FORCE IMPORT AT THE ABSOLUTE TOP - This bypasses browser blocking */
-@import url('https://googleapis.com');
+/* Bulletproof Localized Webfont Import Layer */
+@font-face {
+  font-family: 'Silkscreen';
+  src: url('https://jsdelivr.net') format('woff2'),
+       url('https://jsdelivr.net') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 * {
   box-sizing: border-box;
@@ -8,8 +15,7 @@
 }
 
 body {
-  /* Primary font locked to Silkscreen with absolute generic pixel fallbacks */
-  font-family: 'Silkscreen', 'Courier New', Courier, monospace, sans-serif;
+  font-family: 'Silkscreen', monospace, sans-serif;
   min-height: 100vh;
   background: linear-gradient(180deg, #A4CFFF 0%, #FFFFFF 100%);
   display: flex;
@@ -105,7 +111,7 @@ body {
 .status-label {
   font-family: 'Silkscreen', monospace, sans-serif;
   font-size: 10px;
-  font-weight: bold;
+  font-weight: 400; /* Force uniform weight matching font file spec */
   letter-spacing: 1px;
   background: #2B6CB0;
   color: #FFFFFF;
@@ -143,6 +149,7 @@ body {
 .song-title {
   font-family: 'Silkscreen', monospace, sans-serif;
   font-size: 16px;
+  font-weight: 400;
   margin-bottom: 4px;
   color: #2B6CB0;
 }
@@ -150,6 +157,7 @@ body {
 .artist-name {
   font-family: 'Silkscreen', monospace, sans-serif;
   font-size: 11px;
+  font-weight: 400;
   opacity: 0.8;
 }
 
@@ -162,6 +170,7 @@ body {
 
 .pixel-btn {
   font-family: 'Silkscreen', monospace, sans-serif;
+  font-weight: 400;
   background: rgba(255, 255, 255, 0.7);
   border: 2px solid #2B6CB0;
   color: #2B6CB0;
@@ -201,4 +210,3 @@ body {
     flex: 0.8;                  
     justify-content: space-between;
   }
-}
