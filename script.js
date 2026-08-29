@@ -1,21 +1,16 @@
-// Dynamic Video Engine Swapping Execution using your proven ID format
+// 1. Dynamic Video Engine Swapping Execution
 function switchTrack(videoId, title, artist, element) {
-  // Uses your exact "video-frame" ID target from your working setup
   const player = document.getElementById('video-frame');
+  player.src = "https://youtube.com" + videoId + "?autoplay=1";
   
-  // Uses your exact URL building logic with the autoplay trigger
-  player.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-  
-  // Swap textual metadata elements dynamically
   document.getElementById('song-title').innerText = title;
   document.getElementById('artist-name').innerText = artist;
 
-  // Toggle active button highlight states
   document.querySelectorAll('.pixel-btn').forEach(btn => btn.classList.remove('active'));
   element.classList.add('active');
 }
 
-// Wind-Blown Slanted Rain Drop Generation Script
+// 2. Wind-Blown Slanted Rain Drop Generation Script
 function generateSlantedRain() {
   const rainCanvas = document.getElementById('rain-canvas');
   const dropCount = 40; 
