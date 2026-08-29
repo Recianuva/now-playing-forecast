@@ -34,9 +34,7 @@ body {
   width: 2px;
   height: 45px;
   opacity: 0.7;
-  /* Slanted storm travel trajectory calculation */
   animation: fall linear infinite;
-  will-change: transform; /* Hardware GPU boost for mobile screens */
 }
 
 @keyframes fall {
@@ -55,7 +53,7 @@ body {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  z-index: 10; /* Mounts screen safe over falling background rain */
+  z-index: 10;
 }
 
 /* Embedded Core Video Player Styling */
@@ -115,18 +113,18 @@ body {
   width: 6px;
   height: 4px;
   background-color: #2B6CB0;
+  animation: bounce 0.8s ease-in-out infinite;
   transform-origin: bottom;
 }
 
-/* Only play animation loop if container states are set to active */
-.visualizer-container.playing .bar:nth-child(1) { animation: bounce 0.6s ease-in-out infinite alternate; animation-delay: 0.1s; }
-.visualizer-container.playing .bar:nth-child(2) { animation: bounce 0.8s ease-in-out infinite alternate; animation-delay: 0.3s; }
-.visualizer-container.playing .bar:nth-child(3) { animation: bounce 0.5s ease-in-out infinite alternate; animation-delay: 0.5s; }
-.visualizer-container.playing .bar:nth-child(4) { animation: bounce 0.7s ease-in-out infinite alternate; animation-delay: 0.2s; }
+.bar:nth-child(1) { animation-delay: 0.1s; animation-duration: 0.6s; }
+.bar:nth-child(2) { animation-delay: 0.3s; animation-duration: 0.8s; }
+.bar:nth-child(3) { animation-delay: 0.5s; animation-duration: 0.5s; }
+.bar:nth-child(4) { animation-delay: 0.2s; animation-duration: 0.7s; }
 
 @keyframes bounce {
-  0% { transform: scaleY(1); }
-  100% { transform: scaleY(4.5); }
+  0%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(4.5); }
 }
 
 .song-title {
@@ -158,15 +156,9 @@ body {
   letter-spacing: 1px;
   text-align: center;
   transition: all 0.2s ease;
-  -webkit-tap-highlight-color: transparent; /* Fixes mobile touch blue blocks */
-  outline: none;
 }
 
 .pixel-btn:hover, .pixel-btn.active {
   background: #2B6CB0;
   color: #FFFFFF;
-}
-
-.pixel-btn:active {
-  transform: translateY(1px); /* Retro compression press gesture */
 }
