@@ -1,7 +1,6 @@
 // 1. Dynamic Video Engine Swapping Execution
 function switchTrack(videoId, title, artist, element) {
   const player = document.getElementById('video-player');
-  // Fixed literal string combination prevents browser syntax corruption
   player.src = "https://youtube.com" + videoId + "?enablejsapi=1&modestbranding=1&rel=0";
   
   document.getElementById('song-title').innerText = title;
