@@ -4,9 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>weathergirl tracker desk</title>
-  <link rel="preconnect" href="https://googleapis.com">
+  
+  <!-- Priority Google Font Imports (Fixed Silkscreen Loading Block) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://googleapis.com" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,9 +17,10 @@
   <!-- Ambient Slanted Rain Overlay System -->
   <div id="rain-canvas" class="rain-overlay"></div>
 
+  <!-- Adaptive Desktop/Mobile Flex Container -->
   <main class="layout-container">
     
-    <!-- Imbedded YouTube Player Wrapper -->
+    <!-- Left Widescreen Pane: Embedded YouTube Player Wrapper -->
     <section class="player-wrapper" id="player-container">
       <iframe 
         id="video-frame"
@@ -28,30 +32,35 @@
       </iframe>
     </section>
 
-    <!-- Dynamic Song Info Status Panel -->
-    <section class="status-card">
-      <div class="card-header">
-        <span class="status-label">PLAYING CHANNELS</span>
-        <div class="visualizer-container">
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-          <div class="bar"></div>
-        </div>
-      </div>
+    <!-- Right Widescreen Pane: Control Center Deck -->
+    <div class="control-deck">
       
-      <div class="track-info">
-        <h2 id="song-title" class="song-title">weathergirl</h2>
-        <p id="artist-name" class="artist-name">FLAVOR FOLEY ft. Eleanor Forte</p>
-      </div>
-    </section>
+      <!-- Dynamic Song Info Status Panel -->
+      <section class="status-card">
+        <div class="card-header">
+          <span class="status-label">PLAYING CHANNELS</span>
+          <div class="visualizer-container">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+          </div>
+        </div>
+        
+        <div class="track-info">
+          <h2 id="song-title" class="song-title">weathergirl</h2>
+          <p id="artist-name" class="artist-name">FLAVOR FOLEY ft. Eleanor Forte</p>
+        </div>
+      </section>
 
-    <!-- Channel Selector Switch Matrix -->
-    <nav class="track-selector">
-      <button class="pixel-btn active" onclick="switchTrack('M7VSEZOQIlg', 'weathergirl', 'FLAVOR FOLEY ft. Eleanor Forte', this)">[ ORIGINAL ]</button>
-      <button class="pixel-btn" onclick="switchTrack('OaPcIO2S0Dw', 'weathergirl (Cover)', 'LadyAuro', this)">[ COVER A ]</button>
-      <button class="pixel-btn" onclick="switchTrack('M7VSEZOQIlg', 'weathergirl (Remix)', 'Track 03', this)">[ COVER B ]</button>
-    </nav>
+      <!-- Channel Selector Switch Matrix -->
+      <nav class="track-selector">
+        <button class="pixel-btn active" onclick="switchTrack('M7VSEZOQIlg', 'weathergirl', 'FLAVOR FOLEY ft. Eleanor Forte', this)">[ ORIGINAL ]</button>
+        <button class="pixel-btn" onclick="switchTrack('OaPcIO2S0Dw', 'weathergirl (Cover)', 'LadyAuro', this)">[ COVER A ]</button>
+        <button class="pixel-btn" onclick="switchTrack('M7VSEZOQIlg', 'weathergirl (Remix)', 'Track 03', this)">[ COVER B ]</button>
+      </nav>
+
+    </div>
 
   </main>
 
