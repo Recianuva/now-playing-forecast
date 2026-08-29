@@ -1,4 +1,6 @@
-/* Core Reset and Base Font Definition */
+/* FORCE IMPORT AT THE ABSOLUTE TOP - This bypasses browser blocking */
+@import url('https://googleapis.com');
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -6,7 +8,8 @@
 }
 
 body {
-  font-family: 'Silkscreen', monospace, sans-serif;
+  /* Primary font locked to Silkscreen with absolute generic pixel fallbacks */
+  font-family: 'Silkscreen', 'Courier New', Courier, monospace, sans-serif;
   min-height: 100vh;
   background: linear-gradient(180deg, #A4CFFF 0%, #FFFFFF 100%);
   display: flex;
@@ -100,6 +103,7 @@ body {
 }
 
 .status-label {
+  font-family: 'Silkscreen', monospace, sans-serif;
   font-size: 10px;
   font-weight: bold;
   letter-spacing: 1px;
@@ -137,12 +141,14 @@ body {
 }
 
 .song-title {
+  font-family: 'Silkscreen', monospace, sans-serif;
   font-size: 16px;
   margin-bottom: 4px;
   color: #2B6CB0;
 }
 
 .artist-name {
+  font-family: 'Silkscreen', monospace, sans-serif;
   font-size: 11px;
   opacity: 0.8;
 }
