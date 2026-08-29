@@ -1,7 +1,9 @@
-// 1. Dynamic Video Engine Swapping Execution
+// 1. Dynamic Video Engine Swapping Execution (Added strict embed delegation variables)
 function switchTrack(videoId, title, artist, element) {
   const player = document.getElementById('video-frame');
-  player.src = "https://youtube.com" + videoId + "?autoplay=1";
+  
+  // Appending autoplay=1 along with mute=1 completely unlocks the security restriction layout
+  player.src = "https://www.youtube.com/embed/" + videoId + "?autoplay=1&mute=1&rel=0&modestbranding=1";
   
   document.getElementById('song-title').innerText = title;
   document.getElementById('artist-name').innerText = artist;
