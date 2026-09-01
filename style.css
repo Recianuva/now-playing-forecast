@@ -5,7 +5,8 @@
 }
 
 body {
-  font-family: 'Silkscreen', monospace, sans-serif;
+  /* Updated font target to Press Start 2P */
+  font-family: 'Press Start 2P', monospace, sans-serif;
   min-height: 100vh;
   background: linear-gradient(180deg, #A4CFFF 0%, #FFFFFF 100%);
   display: flex;
@@ -99,13 +100,12 @@ body {
 }
 
 .status-label {
-  font-family: 'Silkscreen', monospace, sans-serif;
-  font-size: 10px;
-  font-weight: 400; 
-  letter-spacing: 1px;
+  font-family: 'Press Start 2P', monospace, sans-serif;
+  font-size: 8px; /* Balanced scale adjust for wider font */
+  letter-spacing: 0.5px;
   background: #2B6CB0;
   color: #FFFFFF;
-  padding: 2px 6px;
+  padding: 4px 6px;
 }
 
 /* Anti-stretching Constraint Container */
@@ -137,17 +137,15 @@ body {
 }
 
 .song-title {
-  font-family: 'Silkscreen', monospace, sans-serif;
-  font-size: 16px;
-  font-weight: 400;
-  margin-bottom: 4px;
+  font-family: 'Press Start 2P', monospace, sans-serif;
+  font-size: 11px; /* Scaled down slightly to stay on one clean line */
+  margin-bottom: 6px;
   color: #2B6CB0;
 }
 
 .artist-name {
-  font-family: 'Silkscreen', monospace, sans-serif;
-  font-size: 11px;
-  font-weight: 400;
+  font-family: 'Press Start 2P', monospace, sans-serif;
+  font-size: 8px;
   opacity: 0.8;
 }
 
@@ -159,15 +157,14 @@ body {
 }
 
 .pixel-btn {
-  font-family: 'Silkscreen', monospace, sans-serif;
-  font-weight: 400;
+  font-family: 'Press Start 2P', monospace, sans-serif;
   background: rgba(255, 255, 255, 0.7);
   border: 2px solid #2B6CB0;
   color: #2B6CB0;
   padding: 12px;
-  font-size: 11px;
+  font-size: 8px;
   cursor: pointer;
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   text-align: center;
   transition: all 0.2s ease;
 }
