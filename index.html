@@ -5,24 +5,33 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>weathergirl tracker desk</title>
   
-  <!-- Direct External Google Fonts Engine -->
-  <link rel="preconnect" href="https://googleapis.com">
-  <link rel="preconnect" href="https://gstatic.com" crossorigin>
-  <link href="https://googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <!-- Using Press Start 2P: This font has 100% stable hosting across all global domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
   
+  <!-- Pointing straight to your root file -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Your Matched Ambient Rain Container -->
-  <div id="rain-container" class="rain-overlay"></div>
+  <!-- Ambient Slanted Rain Overlay System -->
+  <div id="rain-canvas" class="rain-overlay"></div>
 
   <!-- Adaptive Desktop/Mobile Flex Container -->
   <main class="layout-container">
     
-    <!-- Left Widescreen Pane: Embedded YouTube Player Window Target -->
+    <!-- Left Widescreen Pane: Embedded YouTube Player Wrapper -->
     <section class="player-wrapper" id="player-container">
-      <div id="api-player"></div>
+      <iframe 
+        id="video-frame"
+        src="https://youtube.com" 
+        title="weathergirl playlist player" 
+        frameborder="0" 
+        allow="autoplay; encrypted-media; picture-in-picture" 
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
     </section>
 
     <!-- Right Widescreen Pane: Control Center Deck -->
@@ -50,15 +59,13 @@
       <nav class="track-selector">
         <button class="pixel-btn active" onclick="switchTrack('M7VSEZOQIlg', 'weathergirl', 'FLAVOR FOLEY ft. Eleanor Forte', this)">[ ORIGINAL ]</button>
         <button class="pixel-btn" onclick="switchTrack('OaPcIO2S0Dw', 'weathergirl (Cover)', 'LadyAuro', this)">[ COVER A ]</button>
-        <button class="pixel-btn" onclick="switchTrack('49djtI4zq8I', 'weathergirl (Cover)', 'y3llowx', this)">[ COVER B ]</button>
+        <button class="pixel-btn" onclick="switchTrack('M7VSEZOQIlg', 'weathergirl (Remix)', 'Track 03', this)">[ COVER B ]</button>
       </nav>
 
     </div>
 
   </main>
 
-  <!-- Load the official third-party YouTube Player API script securely -->
-  <script src="https://youtube.com"></script>
   <script src="script.js"></script>
 </body>
 </html>
