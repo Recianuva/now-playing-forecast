@@ -25,77 +25,45 @@ function onPlayerReady(event) {
 // 2. Upgraded API Track-Switching Logic (Fixed Muting/Audio State Blocks)
 function switchTrack(videoId, title, artist, element) {
   if (player && typeof player.loadVideoById === 'function') {
-    player.loadVideoById({ videoId: videoId });
+    // Force browser to load the video directly through the official state framework
+    player.loadVideoById({
+      videoId: videoId
+    });
+    
+    // THE MAGIC FIX: Tells the frame structure to break browser silencers and run audio out loud
     player.unMute();
     player.setVolume(100); 
   }
   
+  // Swap textual metadata elements dynamically
   document.getElementById('song-title').innerText = title;
   document.getElementById('artist-name').innerText = artist;
 
+  // Toggle active button highlight states
   document.querySelectorAll('.pixel-btn').forEach(btn => btn.classList.remove('active'));
   element.classList.add('active');
 }
 
-// 3. Your Advanced 3D Depth Rain Engine Code
-function createRainDrop() {
-  const drop = document.createElement('div');
-  drop.className = 'rain-drop';
-  
-  // Randomize depth plane
-  const depthSelector = Math.random();
-  let plane = {};
-  
-  if (depthSelector < 0.2) {
-    // Foreground plane: Fast, fat, long, highly visible
-    plane = {
-      width: '3px',
-      height: '60px',
-      opacity: '0.9',
-      duration: '0.5s',
-      driftSpeed: '1.5s',
-      blurAmount: '0px',
-      zIndex: 3
-    };
-  } else if (depthSelector < 0.6) {
-    // Midground plane: Balanced depth
-    plane = {
-      width: '2px',
-      height: '40px',
-      opacity: '0.5',
-      duration: '0.8s',
-      driftSpeed: '2s',
-      blurAmount: '0.5px',
-      zIndex: 2
-    };
-  } else {
-    // Background plane: Far away, slow, thin, faint
-    plane = {
-      width: '1px',
-      height: '20px',
-      opacity: '0.15',
-      duration: '1.2s',
-      driftSpeed: '3s',
-      blurAmount: '1px',
-      zIndex: 1
-    };
+// 3. Wind-Blown Slanted Rain Drop Generation Script
+function generateSlantedRain() {
+  const rainCanvas = document.getElementById('rain-canvas');
+  const dropCount = 40; 
+
+  for (let i = 0; i < dropCount; i++) {
+    const drop = document.createElement('div');
+    drop.classList.add('drop');
+    
+    drop.style.left = Math.random() * 130 + '%'; 
+    drop.style.top = (Math.random() * -100) - 20 + 'px';
+    
+    drop.style.animationDuration = (Math.random() * 0.5) + 0.6 + 's';
+    drop.style.animationDelay = Math.random() * 2 + 's';
+    
+    rainCanvas.appendChild(drop);
   }
-  
-  // Apply depth-based styles
-  drop.style.width = plane.width;
-  drop.style.height = plane.height;
-  drop.style.opacity = plane.opacity;
-  drop.style.zIndex = plane.zIndex;
-  drop.style.filter = `blur(${plane.blurAmount})`;
-  
-  // Randomize horizontal start position
-  const startX = Math.random() * 100;
-  drop.style.left = startX + '%';
-  
-  // Randomize animation delay for staggered effect
-  const delay = Math.random() * 2;
-  
-  // Apply animations with depth-based speeds
+}
+
+window.addEventListener('DOMContentLoaded', generateSlantedRain);
   drop.style.animation = `
     fall ${plane.duration} linear infinite,
     drift ${plane.driftSpeed} ease-in-out infinite
