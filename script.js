@@ -24,15 +24,13 @@ class Raindrop {
   reset() {
     this.x = Math.random() * canvas.width;
     this.y = Math.random() * canvas.height - canvas.height;
-    this.depth = Math.random(); // 0 = far, 1 = close
+    this.depth = Math.random();
     
-    // Depth affects speed and appearance
-    this.speed = 2 + this.depth * 3; // Foreground moves faster
-    this.opacity = 0.1 + this.depth * 0.8; // Foreground more visible
-    this.width = 1 + this.depth * 2; // Foreground thicker
-    this.height = 20 + this.depth * 30; // Foreground longer
+    this.speed = 2 + this.depth * 3;
+    this.opacity = 0.1 + this.depth * 0.8;
+    this.width = 1 + this.depth * 2;
+    this.height = 20 + this.depth * 30;
     
-    // Wind effect
     this.windDrift = (Math.random() - 0.5) * 2;
   }
 
@@ -40,7 +38,6 @@ class Raindrop {
     this.y += this.speed;
     this.x += this.windDrift * 0.3;
 
-    // Wrap around screen edges
     if (this.y > canvas.height) {
       this.reset();
     }
@@ -88,21 +85,17 @@ class Ripple {
 }
 
 function animate() {
-  // Clear canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Update and draw raindrops
   raindrops.forEach(drop => {
     drop.update();
     drop.draw();
 
-    // Occasional impact ripples (10% chance per frame for realism)
     if (drop.y > canvas.height - 50 && Math.random() > 0.98) {
       ripples.push(new Ripple(drop.x, canvas.height));
     }
   });
 
-  // Update and draw ripples
   ripples = ripples.filter(ripple => !ripple.isDone());
   ripples.forEach(ripple => {
     ripple.update();
@@ -115,7 +108,6 @@ function animate() {
 function initRain() {
   resizeCanvas();
   
-  // Create 150 raindrops across depth planes
   for (let i = 0; i < 150; i++) {
     raindrops.push(new Raindrop());
   }
@@ -164,12 +156,4 @@ function switchTrack(videoId, title, artist, element) {
 
   document.querySelectorAll('.pixel-btn').forEach(btn => btn.classList.remove('active'));
   element.classList.add('active');
-}  const dropCount = 100;
-  
-  for (let i = 0; i < dropCount; i++) {
-    const drop = createRainDrop();
-    container.appendChild(drop);
-  }
 }
-
-document.addEventListener('DOMContentLoaded', initializeRain);
