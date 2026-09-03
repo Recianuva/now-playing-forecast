@@ -1,3 +1,134 @@
+// ===== CANVAS RAIN ENGINE WITH IMPACT RIPPLES =====
+const canvas = document.createElement('canvas');
+const ctx = canvas.getContext('2d');
+canvas.style.position = 'fixed';
+canvas.style.top = '0';
+canvas.style.left = '0';
+canvas.style.pointerEvents = 'none';
+canvas.style.zIndex = '1';
+document.body.appendChild(canvas);
+
+let raindrops = [];
+let ripples = [];
+
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+
+class Raindrop {
+  constructor() {
+    this.reset();
+  }
+
+  reset() {
+    this.x = Math.random() * canvas.width;
+    this.y = Math.random() * canvas.height - canvas.height;
+    this.depth = Math.random(); // 0 = far, 1 = close
+    
+    // Depth affects speed and appearance
+    this.speed = 2 + this.depth * 3; // Foreground moves faster
+    this.opacity = 0.1 + this.depth * 0.8; // Foreground more visible
+    this.width = 1 + this.depth * 2; // Foreground thicker
+    this.height = 20 + this.depth * 30; // Foreground longer
+    
+    // Wind effect
+    this.windDrift = (Math.random() - 0.5) * 2;
+  }
+
+  update() {
+    this.y += this.speed;
+    this.x += this.windDrift * 0.3;
+
+    // Wrap around screen edges
+    if (this.y > canvas.height) {
+      this.reset();
+    }
+    if (this.x < 0 || this.x > canvas.width) {
+      this.x = (this.x + canvas.width) % canvas.width;
+    }
+  }
+
+  draw() {
+    ctx.strokeStyle = `rgba(43, 108, 176, ${this.opacity})`;
+    ctx.lineWidth = this.width;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(this.x, this.y);
+    ctx.lineTo(this.x - 5, this.y + this.height);
+    ctx.stroke();
+  }
+}
+
+class Ripple {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+    this.radius = 0;
+    this.maxRadius = 40;
+    this.opacity = 0.6;
+  }
+
+  update() {
+    this.radius += 2;
+    this.opacity -= 0.01;
+  }
+
+  draw() {
+    ctx.strokeStyle = `rgba(43, 108, 176, ${this.opacity})`;
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+
+  isDone() {
+    return this.opacity <= 0 || this.radius >= this.maxRadius;
+  }
+}
+
+function animate() {
+  // Clear canvas
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // Update and draw raindrops
+  raindrops.forEach(drop => {
+    drop.update();
+    drop.draw();
+
+    // Occasional impact ripples (10% chance per frame for realism)
+    if (drop.y > canvas.height - 50 && Math.random() > 0.98) {
+      ripples.push(new Ripple(drop.x, canvas.height));
+    }
+  });
+
+  // Update and draw ripples
+  ripples = ripples.filter(ripple => !ripple.isDone());
+  ripples.forEach(ripple => {
+    ripple.update();
+    ripple.draw();
+  });
+
+  requestAnimationFrame(animate);
+}
+
+function initRain() {
+  resizeCanvas();
+  
+  // Create 150 raindrops across depth planes
+  for (let i = 0; i < 150; i++) {
+    raindrops.push(new Raindrop());
+  }
+
+  animate();
+}
+
+window.addEventListener('resize', resizeCanvas);
+document.addEventListener('DOMContentLoaded', () => {
+  initRain();
+});
+
+// ===== YOUTUBE PLAYER CODE =====
 let player;
 
 function onYouTubeIframeAPIReady() {
@@ -33,70 +164,7 @@ function switchTrack(videoId, title, artist, element) {
 
   document.querySelectorAll('.pixel-btn').forEach(btn => btn.classList.remove('active'));
   element.classList.add('active');
-}
-
-function createRainDrop() {
-  const drop = document.createElement('div');
-  drop.className = 'rain-drop';
-  
-  const depthSelector = Math.random();
-  let plane = {};
-  
-  if (depthSelector < 0.2) {
-    plane = {
-      width: '3px',
-      height: '60px',
-      opacity: '0.9',
-      duration: '0.5s',
-      driftSpeed: '1.5s',
-      blurAmount: '0px',
-      zIndex: 3
-    };
-  } else if (depthSelector < 0.6) {
-    plane = {
-      width: '2px',
-      height: '40px',
-      opacity: '0.5',
-      duration: '0.8s',
-      driftSpeed: '2s',
-      blurAmount: '0.5px',
-      zIndex: 2
-    };
-  } else {
-    plane = {
-      width: '1px',
-      height: '20px',
-      opacity: '0.15',
-      duration: '1.2s',
-      driftSpeed: '3s',
-      blurAmount: '1px',
-      zIndex: 1
-    };
-  }
-  
-  drop.style.width = plane.width;
-  drop.style.height = plane.height;
-  drop.style.opacity = plane.opacity;
-  drop.style.zIndex = plane.zIndex;
-  drop.style.filter = `blur(${plane.blurAmount})`;
-  
-  const startX = Math.random() * 100;
-  drop.style.left = startX + '%';
-  
-  const delay = Math.random() * 2;
-  
-  drop.style.animation = `
-    fall ${plane.duration} linear infinite,
-    drift ${plane.driftSpeed} ease-in-out infinite
-  `;
-  drop.style.animationDelay = `-${delay}s, -${delay}s`;
-  
-  return drop;
-}
-
-function initializeRain() {
-  const container = document.getElementById('rain-container');
-  const dropCount = 100;
+}  const dropCount = 100;
   
   for (let i = 0; i < dropCount; i++) {
     const drop = createRainDrop();
